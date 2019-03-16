@@ -9,16 +9,9 @@
 Pod::Spec.new do |s|
   s.name             = 'Proximitis'
   s.version          = '1.0.0'
-  s.summary          = 'A short description of Proximitis.'
+  s.summary          = 'SDK for ranging beacons and deliver custom Campaigns.'
+  s.description      = 'Framework for ranging Eddystone beacons and deliver custom Campaigns.'
   s.swift_version    = '4.0'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = 'A long description of Proximitis.'
 
   s.homepage         = 'https://github.com/homoky/proximitis-sdk-ios-public.git'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
