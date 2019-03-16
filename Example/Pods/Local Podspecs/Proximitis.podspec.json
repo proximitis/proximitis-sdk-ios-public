@@ -1,0 +1,22 @@
+{
+  "name": "Proximitis",
+  "version": "0.1.0",
+  "summary": "A short description of Proximitis.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/georgnroll/Proximitis",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "georgnroll": "jirka@markalous.cz"
+  },
+  "source": {
+    "git": "https://github.com/georgnroll/Proximitis.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Proximitis/Classes/**/*"
+}
