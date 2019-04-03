@@ -1,4 +1,4 @@
-# iOS - Swift
+# Proximitis SDK iOS Framework
 
 ## Instalace SDK 
 
@@ -10,7 +10,8 @@
 
 1. Zkopírujte následující kód do AppDelegate vaší aplikace:
 
-    `func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    ```
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
 				//Spustí službu Proximitis
 				// Doplňte vlastní App Key
@@ -23,7 +24,8 @@
         UNUserNotificationCenter.current().delegate = self
 
         return true
-    }`
+    }
+```
 
 
 2. Přidejte tato volání do AppDelegatu:
