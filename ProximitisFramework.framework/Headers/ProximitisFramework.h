@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double ProximitisFrameworkVersionNumber;
 FOUNDATION_EXPORT const unsigned char ProximitisFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ProximitisFramework/PublicHeader.h>
-
-
