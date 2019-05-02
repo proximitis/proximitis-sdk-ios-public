@@ -225,6 +225,7 @@ SWIFT_CLASS("_TtC19ProximitisFramework11BasicStyles")
 SWIFT_CLASS("_TtC19ProximitisFramework6Beacon")
 @interface Beacon : RealmSwiftObject
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isAllowedToUpdate SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRealm:(RLMRealm * _Nonnull)realm schema:(RLMObjectSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithValue:(id _Nonnull)value schema:(RLMSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
@@ -233,6 +234,10 @@ SWIFT_CLASS("_TtC19ProximitisFramework6Beacon")
 
 SWIFT_CLASS("_TtC19ProximitisFramework13BeaconFactory")
 @interface BeaconFactory : NSObject
++ (BeaconFactory * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (Beacon * _Nullable)findBeaconWithNamespace:(NSString * _Nonnull)namespace_ instance:(NSString * _Nonnull)instance create:(BOOL)create SWIFT_WARN_UNUSED_RESULT;
+- (void)save:(Beacon * _Nonnull)beacon;
+- (void)setUpdateWithBeacon:(Beacon * _Nonnull)beacon;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -263,10 +268,33 @@ SWIFT_CLASS("_TtC19ProximitisFramework12BlockFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIImage;
 
 SWIFT_CLASS("_TtC19ProximitisFramework8Campaign")
 @interface Campaign : RealmSwiftObject
+@property (nonatomic, copy) NSString * _Nonnull id;
+@property (nonatomic, copy) NSString * _Nonnull notificationTitle;
+@property (nonatomic, copy) NSString * _Nonnull notificationText;
+@property (nonatomic, copy) NSString * _Nonnull notificationImagePath;
+@property (nonatomic, copy) NSString * _Nonnull type;
+@property (nonatomic, copy) NSString * _Nonnull detailURLPath;
+@property (nonatomic, copy) NSString * _Nonnull listImagePath;
+@property (nonatomic, copy) NSString * _Nonnull listTitle;
+@property (nonatomic, copy) NSString * _Nonnull listText;
+@property (nonatomic) BOOL isActive;
+@property (nonatomic, copy) NSString * _Nonnull inAppEvent;
+@property (nonatomic) NSInteger cooldown;
+@property (nonatomic) NSInteger maximumNotificationsPerUser;
+@property (nonatomic, copy) NSDate * _Nonnull created;
+@property (nonatomic, copy) NSDate * _Nullable updated;
+@property (nonatomic, copy) NSDate * _Nullable notificationSent;
+@property (nonatomic) NSInteger notificationCount;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)needsUpdate SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)shouldNotify SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)listImageName SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)notificationImageName SWIFT_WARN_UNUSED_RESULT;
+- (UIImage * _Nullable)listImage SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRealm:(RLMRealm * _Nonnull)realm schema:(RLMObjectSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithValue:(id _Nonnull)value schema:(RLMSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
@@ -275,12 +303,19 @@ SWIFT_CLASS("_TtC19ProximitisFramework8Campaign")
 
 SWIFT_CLASS("_TtC19ProximitisFramework15CampaignFactory")
 @interface CampaignFactory : NSObject
++ (CampaignFactory * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<Campaign *> * _Nullable)allCampaigns SWIFT_WARN_UNUSED_RESULT;
+- (void)deleteWithCampaignId:(NSString * _Nonnull)campaignId;
+- (void)save:(Campaign * _Nonnull)campaign;
+- (void)setUpdateWithCampaign:(Campaign * _Nonnull)campaign;
+- (void)setNotifiedWithCampaign:(Campaign * _Nonnull)campaign;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 SWIFT_CLASS("_TtC19ProximitisFramework15CampaignManager")
 @interface CampaignManager : NSObject
++ (void)updateAllCampaignsWithCompletion:(void (^ _Nonnull)(void))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -302,15 +337,68 @@ SWIFT_CLASS("_TtC19ProximitisFramework12EventFactory")
 
 
 
+@class ProximitisDetailViewController;
 
 SWIFT_CLASS("_TtC19ProximitisFramework10Proximitis")
 @interface Proximitis : NSObject
++ (void)setDebugging:(BOOL)debug;
++ (void)startWith:(NSString * _Nonnull)applicationKey;
++ (NSURL * _Nonnull)proximitisDirectoryURL SWIFT_WARN_UNUSED_RESULT;
++ (NSURL * _Nonnull)documentsDirectoryURL SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull applicationKey;)
++ (NSString * _Nonnull)applicationKey SWIFT_WARN_UNUSED_RESULT;
++ (void)logEventsWithCompletion:(void (^ _Nonnull)(void))completion;
++ (void)openCampaignDetailInModalWithCampaignID:(NSString * _Nonnull)campaignID;
++ (void)applicationDidBecomeActive;
++ (void)applicationDidEnterBackground;
++ (ProximitisDetailViewController * _Nullable)makeCampaignDetailViewControllerWithCampaign:(Campaign * _Nonnull)campaign SWIFT_WARN_UNUSED_RESULT;
++ (void)debug:(NSString * _Nonnull)text;
++ (void)performBackgroundFetchWithCompletion:(void (^ _Nonnull)(void))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum StatusBarStyle : NSInteger;
 
 SWIFT_CLASS("_TtC19ProximitisFramework20ProximitisAppearance")
 @interface ProximitisAppearance : NSObject
++ (void)reloadTheme;
++ (void)setStatusBar:(enum StatusBarStyle)style;
++ (void)setPrimaryColor:(UIColor * _Nonnull)color;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull primaryColor;)
++ (UIColor * _Nonnull)primaryColor SWIFT_WARN_UNUSED_RESULT;
++ (void)setBackgroundColor:(UIColor * _Nonnull)color;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull backgroundColor;)
++ (UIColor * _Nonnull)backgroundColor SWIFT_WARN_UNUSED_RESULT;
++ (void)setTitleColor:(UIColor * _Nonnull)color;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull titleColor;)
++ (UIColor * _Nonnull)titleColor SWIFT_WARN_UNUSED_RESULT;
++ (void)setHeadingColor:(UIColor * _Nonnull)color;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull headingColor;)
++ (UIColor * _Nonnull)headingColor SWIFT_WARN_UNUSED_RESULT;
++ (void)setTextColor:(UIColor * _Nonnull)color;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull textColor;)
++ (UIColor * _Nonnull)textColor SWIFT_WARN_UNUSED_RESULT;
++ (void)setButtonTextColor:(UIColor * _Nonnull)color;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull buttonTextColor;)
++ (UIColor * _Nonnull)buttonTextColor SWIFT_WARN_UNUSED_RESULT;
++ (void)setButtonColor:(UIColor * _Nonnull)color;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _Nonnull buttonColor;)
++ (UIColor * _Nonnull)buttonColor SWIFT_WARN_UNUSED_RESULT;
++ (void)setSpacing:(double)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) double spacing;)
++ (double)spacing SWIFT_WARN_UNUSED_RESULT;
++ (void)setTitleFontSize:(double)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) double titleFontSize;)
++ (double)titleFontSize SWIFT_WARN_UNUSED_RESULT;
++ (void)setHeadingFontSize:(double)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) double headingFontSize;)
++ (double)headingFontSize SWIFT_WARN_UNUSED_RESULT;
++ (void)setTextFontSize:(double)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) double textFontSize;)
++ (double)textFontSize SWIFT_WARN_UNUSED_RESULT;
++ (void)setLineHeight:(CGFloat)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGFloat lineHeight;)
++ (CGFloat)lineHeight SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -333,6 +421,7 @@ SWIFT_CLASS("_TtC19ProximitisFramework31ProximitisDefaultViewController")
 
 SWIFT_CLASS("_TtC19ProximitisFramework30ProximitisDetailViewController")
 @interface ProximitisDetailViewController : ProximitisDefaultViewController
+@property (nonatomic, strong) Campaign * _Nullable campaign;
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -342,6 +431,7 @@ SWIFT_CLASS("_TtC19ProximitisFramework30ProximitisDetailViewController")
 SWIFT_CLASS("_TtC19ProximitisFramework18ProximitisInfoView")
 @interface ProximitisInfoView : UIView
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithOffset:(CGFloat)offset image:(UIImage * _Nullable)image text:(NSString * _Nullable)text OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
 
@@ -350,6 +440,8 @@ SWIFT_CLASS("_TtC19ProximitisFramework18ProximitisInfoView")
 
 SWIFT_CLASS("_TtC19ProximitisFramework28ProximitisListViewController")
 @interface ProximitisListViewController : UITableViewController
+@property (nonatomic, copy) NSArray<Campaign *> * _Nullable campaigns;
+@property (nonatomic) UITableViewCellSeparatorStyle separatorStyle;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
@@ -357,6 +449,7 @@ SWIFT_CLASS("_TtC19ProximitisFramework28ProximitisListViewController")
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)openWithCampaign:(Campaign * _Nonnull)campaign;
 - (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -366,6 +459,7 @@ SWIFT_CLASS("_TtC19ProximitisFramework28ProximitisListViewController")
 SWIFT_CLASS("_TtC19ProximitisFramework34ProximitisNavigationViewController")
 @interface ProximitisNavigationViewController : UINavigationController
 - (void)viewDidLoad;
+- (void)addDismissButton;
 - (void)close;
 - (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=5.0);
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
@@ -373,18 +467,30 @@ SWIFT_CLASS("_TtC19ProximitisFramework34ProximitisNavigationViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UNNotificationResponse;
 
 SWIFT_CLASS("_TtC19ProximitisFramework28ProximitisNotificationClient")
 @interface ProximitisNotificationClient : NSObject
+- (void)scheduleNotificationFor:(Campaign * _Nonnull)campaign;
++ (void)notificationTappedWithResponse:(UNNotificationResponse * _Nonnull)response;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSAttributedString;
 
 SWIFT_CLASS("_TtC19ProximitisFramework28ProximitisPageViewController")
 @interface ProximitisPageViewController : ProximitisDetailViewController
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
+- (double)drawAttributedLabelWithText:(NSAttributedString * _Nonnull)text position:(CGPoint)position SWIFT_WARN_UNUSED_RESULT;
+- (double)drawTitleWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
+- (double)drawHeadingWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
+- (double)drawTextWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
+- (double)drawImageWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
+- (double)drawOrderedListWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
+- (double)drawUnorderedListWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
+- (double)drawButtonWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -392,6 +498,7 @@ SWIFT_CLASS("_TtC19ProximitisFramework28ProximitisPageViewController")
 
 SWIFT_CLASS("_TtC19ProximitisFramework27ProximitisWebViewController")
 @interface ProximitisWebViewController : ProximitisDetailViewController
+@property (nonatomic, strong) ProximitisInfoView * _Null_unspecified infoScreen;
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -400,6 +507,11 @@ SWIFT_CLASS("_TtC19ProximitisFramework27ProximitisWebViewController")
 
 @interface ProximitisWebViewController (SWIFT_EXTENSION(ProximitisFramework)) <UIWebViewDelegate>
 @end
+
+typedef SWIFT_ENUM(NSInteger, StatusBarStyle, closed) {
+  StatusBarStyleLight = 0,
+  StatusBarStyleDark = 1,
+};
 
 
 /// A class that takes a <a href="https://daringfireball.net/projects/markdown/">Markdown</a> string or file and returns an NSAttributedString with the applied styles. Supports Dynamic Type.
