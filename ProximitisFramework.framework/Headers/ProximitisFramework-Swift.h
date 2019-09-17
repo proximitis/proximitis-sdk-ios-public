@@ -170,7 +170,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import CoreLocation;
 @import Foundation;
 @import ObjectiveC;
-@import RealmSwift;
 @import UIKit;
 #endif
 
@@ -188,18 +187,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma clang attribute push(__attribute__((external_source_symbol(language="Swift", defined_in="ProximitisFramework",generated_declaration))), apply_to=any(function,enum,objc_interface,objc_category,objc_protocol))
 # pragma pop_macro("any")
 #endif
-
-@class RLMRealm;
-@class RLMObjectSchema;
-@class RLMSchema;
-
-SWIFT_CLASS("_TtC19ProximitisFramework9Attribute")
-@interface Attribute : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithRealm:(RLMRealm * _Nonnull)realm schema:(RLMObjectSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithValue:(id _Nonnull)value schema:(RLMSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
-@end
 
 @class UIColor;
 
@@ -222,13 +209,22 @@ SWIFT_CLASS("_TtC19ProximitisFramework11BasicStyles")
 @end
 
 
-SWIFT_CLASS("_TtC19ProximitisFramework6Beacon")
-@interface Beacon : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)isAllowedToUpdate SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS("_TtC19ProximitisFramework13DefaultObject")
+@interface DefaultObject : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithRealm:(RLMRealm * _Nonnull)realm schema:(RLMObjectSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithValue:(id _Nonnull)value schema:(RLMSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, copy) NSString * _Nonnull id;
+@end
+
+@class NSCoder;
+
+SWIFT_CLASS("_TtC19ProximitisFramework6Beacon")
+@interface Beacon : DefaultObject <NSCoding>
++ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+- (BOOL)isAllowedToUpdate SWIFT_WARN_UNUSED_RESULT;
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -236,7 +232,6 @@ SWIFT_CLASS("_TtC19ProximitisFramework13BeaconFactory")
 @interface BeaconFactory : NSObject
 + (BeaconFactory * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (Beacon * _Nullable)findBeaconWithNamespace:(NSString * _Nonnull)namespace_ instance:(NSString * _Nonnull)instance create:(BOOL)create SWIFT_WARN_UNUSED_RESULT;
-- (void)save:(Beacon * _Nonnull)beacon;
 - (void)setUpdateWithBeacon:(Beacon * _Nonnull)beacon;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -247,38 +242,27 @@ SWIFT_CLASS("_TtC19ProximitisFramework13BeaconManager")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class CLLocationManager;
+@class CLRegion;
 
 @interface BeaconManager (SWIFT_EXTENSION(ProximitisFramework)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didEnterRegion:(CLRegion * _Nonnull)region;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didExitRegion:(CLRegion * _Nonnull)region;
 @end
 
 
-
-
-SWIFT_CLASS("_TtC19ProximitisFramework5Block")
-@interface Block : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithRealm:(RLMRealm * _Nonnull)realm schema:(RLMObjectSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithValue:(id _Nonnull)value schema:(RLMSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC19ProximitisFramework12BlockFactory")
-@interface BlockFactory : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
 
 @class UIImage;
 
 SWIFT_CLASS("_TtC19ProximitisFramework8Campaign")
-@interface Campaign : RealmSwiftObject
-@property (nonatomic, copy) NSString * _Nonnull id;
+@interface Campaign : DefaultObject <NSCoding>
 @property (nonatomic, copy) NSString * _Nonnull notificationTitle;
 @property (nonatomic, copy) NSString * _Nonnull notificationText;
-@property (nonatomic, copy) NSString * _Nonnull notificationImagePath;
+@property (nonatomic, copy) NSString * _Nullable notificationImage;
 @property (nonatomic, copy) NSString * _Nonnull type;
-@property (nonatomic, copy) NSString * _Nonnull detailURLPath;
-@property (nonatomic, copy) NSString * _Nonnull listImagePath;
+@property (nonatomic, copy) NSString * _Nullable detailUrl;
+@property (nonatomic, copy) NSString * _Nonnull listImage;
 @property (nonatomic, copy) NSString * _Nonnull listTitle;
 @property (nonatomic, copy) NSString * _Nonnull listText;
 @property (nonatomic) BOOL isActive;
@@ -290,23 +274,21 @@ SWIFT_CLASS("_TtC19ProximitisFramework8Campaign")
 @property (nonatomic, copy) NSDate * _Nullable notificationSent;
 @property (nonatomic) NSInteger notificationCount;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)needsUpdate SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)shouldNotify SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)listImageName SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)notificationImageName SWIFT_WARN_UNUSED_RESULT;
-- (UIImage * _Nullable)listImage SWIFT_WARN_UNUSED_RESULT;
+- (UIImage * _Nullable)image SWIFT_WARN_UNUSED_RESULT;
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithRealm:(RLMRealm * _Nonnull)realm schema:(RLMObjectSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithValue:(id _Nonnull)value schema:(RLMSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 SWIFT_CLASS("_TtC19ProximitisFramework15CampaignFactory")
 @interface CampaignFactory : NSObject
 + (CampaignFactory * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (NSArray<Campaign *> * _Nullable)allCampaigns SWIFT_WARN_UNUSED_RESULT;
-- (void)deleteWithCampaignId:(NSString * _Nonnull)campaignId;
-- (void)save:(Campaign * _Nonnull)campaign;
 - (void)setUpdateWithCampaign:(Campaign * _Nonnull)campaign;
 - (void)setNotifiedWithCampaign:(Campaign * _Nonnull)campaign;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -320,12 +302,25 @@ SWIFT_CLASS("_TtC19ProximitisFramework15CampaignManager")
 @end
 
 
-SWIFT_CLASS("_TtC19ProximitisFramework5Event")
-@interface Event : RealmSwiftObject
-+ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+
+SWIFT_CLASS("_TtC19ProximitisFramework11DetailBlock")
+@interface DetailBlock : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithRealm:(RLMRealm * _Nonnull)realm schema:(RLMObjectSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithValue:(id _Nonnull)value schema:(RLMSchema * _Nonnull)schema OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19ProximitisFramework18DetailBlockCreator")
+@interface DetailBlockCreator : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19ProximitisFramework5Event")
+@interface Event : DefaultObject <NSCoding>
+- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -336,13 +331,31 @@ SWIFT_CLASS("_TtC19ProximitisFramework12EventFactory")
 
 
 
+SWIFT_CLASS("_TtC19ProximitisFramework15JSONFileManager")
+@interface JSONFileManager : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC19ProximitisFramework13ObjectManager")
+@interface ObjectManager : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19ProximitisFramework12ObjectParser")
+@interface ObjectParser : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 @class ProximitisDetailViewController;
 
 SWIFT_CLASS("_TtC19ProximitisFramework10Proximitis")
 @interface Proximitis : NSObject
 + (void)setDebugging:(BOOL)debug;
-+ (void)startWith:(NSString * _Nonnull)applicationKey;
+- (void)startWith:(NSString * _Nonnull)applicationKey;
 + (NSURL * _Nonnull)proximitisDirectoryURL SWIFT_WARN_UNUSED_RESULT;
 + (NSURL * _Nonnull)documentsDirectoryURL SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull applicationKey;)
@@ -353,7 +366,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (void)applicationDidEnterBackground;
 + (ProximitisDetailViewController * _Nullable)makeCampaignDetailViewControllerWithCampaign:(Campaign * _Nonnull)campaign SWIFT_WARN_UNUSED_RESULT;
 + (void)debug:(NSString * _Nonnull)text;
-+ (void)performBackgroundFetchWithCompletion:(void (^ _Nonnull)(void))completion;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Proximitis * _Nonnull shared;)
++ (Proximitis * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (void)performBackgroundFetchWithCompletion:(void (^ _Nonnull)(void))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -399,6 +414,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) double textFontSize;
 + (void)setLineHeight:(CGFloat)value;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGFloat lineHeight;)
 + (CGFloat)lineHeight SWIFT_WARN_UNUSED_RESULT;
++ (void)setDismissButtonImage:(UIImage * _Nonnull)image;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIImage * _Nullable dismissButtonImage;)
++ (UIImage * _Nullable)dismissButtonImage SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -409,13 +427,27 @@ SWIFT_CLASS("_TtC19ProximitisFramework22ProximitisConfigurator")
 @end
 
 @class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC19ProximitisFramework31ProximitisDefaultViewController")
 @interface ProximitisDefaultViewController : UIViewController
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIView;
+
+SWIFT_PROTOCOL("_TtP19ProximitisFramework16ProximitisDetail_")
+@protocol ProximitisDetail
+- (UIView * _Nonnull)viewForTitleWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForHeadingWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForParagraphWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForImageWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForOrderedListWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForUnorderedListWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForButtonWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+@optional
+- (UIView * _Nonnull)viewForCustomWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -477,28 +509,36 @@ SWIFT_CLASS("_TtC19ProximitisFramework28ProximitisNotificationClient")
 @end
 
 @class NSAttributedString;
+@class UILabel;
 
 SWIFT_CLASS("_TtC19ProximitisFramework28ProximitisPageViewController")
 @interface ProximitisPageViewController : ProximitisDetailViewController
+@property (nonatomic, copy) NSArray<DetailBlock *> * _Nullable blocks;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
-- (double)drawAttributedLabelWithText:(NSAttributedString * _Nonnull)text position:(CGPoint)position SWIFT_WARN_UNUSED_RESULT;
-- (double)drawTitleWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
-- (double)drawHeadingWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
-- (double)drawTextWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
-- (double)drawImageWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
-- (double)drawOrderedListWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
-- (double)drawUnorderedListWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
-- (double)drawButtonWithBlock:(Block * _Nonnull)block y:(double)y SWIFT_WARN_UNUSED_RESULT;
+- (void)addWithBlockView:(UIView * _Nonnull)blockView;
+- (UILabel * _Nonnull)attributedLabelWithText:(NSAttributedString * _Nonnull)text SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+@interface ProximitisPageViewController (SWIFT_EXTENSION(ProximitisFramework)) <ProximitisDetail>
+- (UIView * _Nonnull)viewForTitleWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForHeadingWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForParagraphWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForImageWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForOrderedListWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForUnorderedListWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForButtonWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nonnull)viewForCustomWithBlock:(DetailBlock * _Nonnull)block SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 SWIFT_CLASS("_TtC19ProximitisFramework27ProximitisWebViewController")
 @interface ProximitisWebViewController : ProximitisDetailViewController
-@property (nonatomic, strong) ProximitisInfoView * _Null_unspecified infoScreen;
+@property (nonatomic, strong) UIView * _Null_unspecified infoScreen;
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;

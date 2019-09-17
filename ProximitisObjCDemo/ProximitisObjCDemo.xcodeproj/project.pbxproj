@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49A5166C227AE4F7007D2791 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A5166B227AE4F7007D2791 /* AppDelegate.m */; };
-		49A51672227AE4F7007D2791 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A51670227AE4F7007D2791 /* Main.storyboard */; };
-		49A51674227AE4F8007D2791 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A51673227AE4F8007D2791 /* Assets.xcassets */; };
-		49A51677227AE4F8007D2791 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A51675227AE4F8007D2791 /* LaunchScreen.storyboard */; };
-		49A5167A227AE4F8007D2791 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A51679227AE4F8007D2791 /* main.m */; };
-		49FC374A227AE6A500E47248 /* ProximitisFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC3749227AE6A400E47248 /* ProximitisFramework.framework */; };
-		49FC374C227AE6AB00E47248 /* ProximitisFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49FC3749227AE6A400E47248 /* ProximitisFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7751077E9A14EE953BF1A79F /* Pods_ProximitisObjCDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E82A25429D1062B9FFDD9AB /* Pods_ProximitisObjCDemo.framework */; };
+		4913936F232E724B008A197C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4913936E232E724B008A197C /* AppDelegate.m */; };
+		49139375232E724B008A197C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49139373232E724B008A197C /* Main.storyboard */; };
+		49139377232E724B008A197C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49139376232E724B008A197C /* Assets.xcassets */; };
+		4913937A232E724B008A197C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49139378232E724B008A197C /* LaunchScreen.storyboard */; };
+		4913937D232E724B008A197C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4913937C232E724B008A197C /* main.m */; };
+		49139389232E7371008A197C /* ProximitisFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49139388232E7371008A197C /* ProximitisFramework.framework */; };
+		4913938A232E7374008A197C /* ProximitisFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49139388232E7371008A197C /* ProximitisFramework.framework */; };
+		4913938B232E7374008A197C /* ProximitisFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49139388232E7371008A197C /* ProximitisFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		49FC374D227AE6AB00E47248 /* Embed Frameworks */ = {
+		49139387232E726B008A197C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49FC374C227AE6AB00E47248 /* ProximitisFramework.framework in Embed Frameworks */,
+				4913938B232E7374008A197C /* ProximitisFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -32,96 +32,72 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		49A51667227AE4F7007D2791 /* ProximitisObjCDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProximitisObjCDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		49A5166A227AE4F7007D2791 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		49A5166B227AE4F7007D2791 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		49A51671227AE4F7007D2791 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		49A51673227AE4F8007D2791 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		49A51676227AE4F8007D2791 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		49A51678227AE4F8007D2791 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49A51679227AE4F8007D2791 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		49FC3749227AE6A400E47248 /* ProximitisFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProximitisFramework.framework; path = ../ProximitisFramework.framework; sourceTree = "<group>"; };
-		57E60F99846C0E0FE21560F5 /* Pods-ProximitisObjCDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProximitisObjCDemo.release.xcconfig"; path = "Target Support Files/Pods-ProximitisObjCDemo/Pods-ProximitisObjCDemo.release.xcconfig"; sourceTree = "<group>"; };
-		784AD654A9F18C517C8B83E2 /* Pods-ProximitisObjCDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProximitisObjCDemo.debug.xcconfig"; path = "Target Support Files/Pods-ProximitisObjCDemo/Pods-ProximitisObjCDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		8E82A25429D1062B9FFDD9AB /* Pods_ProximitisObjCDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProximitisObjCDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4913936A232E724B008A197C /* ProximitisObjCDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProximitisObjCDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4913936D232E724B008A197C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4913936E232E724B008A197C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		49139374232E724B008A197C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49139376232E724B008A197C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49139379232E724B008A197C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4913937B232E724B008A197C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4913937C232E724B008A197C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		49139388232E7371008A197C /* ProximitisFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProximitisFramework.framework; path = ProximitisObjCDemo/Frameworks/ProximitisFramework.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		49A51664227AE4F7007D2791 /* Frameworks */ = {
+		49139367232E724B008A197C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7751077E9A14EE953BF1A79F /* Pods_ProximitisObjCDemo.framework in Frameworks */,
-				49FC374A227AE6A500E47248 /* ProximitisFramework.framework in Frameworks */,
+				49139389232E7371008A197C /* ProximitisFramework.framework in Frameworks */,
+				4913938A232E7374008A197C /* ProximitisFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49A5165E227AE4F7007D2791 = {
+		49139361232E724A008A197C = {
 			isa = PBXGroup;
 			children = (
-				49FC3749227AE6A400E47248 /* ProximitisFramework.framework */,
-				49A51669227AE4F7007D2791 /* ProximitisObjCDemo */,
-				49A51668227AE4F7007D2791 /* Products */,
-				EFFBAADF5319440DA12A2363 /* Pods */,
-				BAC12A3AB8D22803588BF7C1 /* Frameworks */,
+				49139388232E7371008A197C /* ProximitisFramework.framework */,
+				4913936C232E724B008A197C /* ProximitisObjCDemo */,
+				4913936B232E724B008A197C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		49A51668227AE4F7007D2791 /* Products */ = {
+		4913936B232E724B008A197C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49A51667227AE4F7007D2791 /* ProximitisObjCDemo.app */,
+				4913936A232E724B008A197C /* ProximitisObjCDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		49A51669227AE4F7007D2791 /* ProximitisObjCDemo */ = {
+		4913936C232E724B008A197C /* ProximitisObjCDemo */ = {
 			isa = PBXGroup;
 			children = (
-				49A5166A227AE4F7007D2791 /* AppDelegate.h */,
-				49A5166B227AE4F7007D2791 /* AppDelegate.m */,
-				49A51670227AE4F7007D2791 /* Main.storyboard */,
-				49A51673227AE4F8007D2791 /* Assets.xcassets */,
-				49A51675227AE4F8007D2791 /* LaunchScreen.storyboard */,
-				49A51678227AE4F8007D2791 /* Info.plist */,
-				49A51679227AE4F8007D2791 /* main.m */,
+				4913936D232E724B008A197C /* AppDelegate.h */,
+				4913936E232E724B008A197C /* AppDelegate.m */,
+				49139373232E724B008A197C /* Main.storyboard */,
+				49139376232E724B008A197C /* Assets.xcassets */,
+				49139378232E724B008A197C /* LaunchScreen.storyboard */,
+				4913937B232E724B008A197C /* Info.plist */,
+				4913937C232E724B008A197C /* main.m */,
 			);
 			path = ProximitisObjCDemo;
-			sourceTree = "<group>";
-		};
-		BAC12A3AB8D22803588BF7C1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8E82A25429D1062B9FFDD9AB /* Pods_ProximitisObjCDemo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EFFBAADF5319440DA12A2363 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				784AD654A9F18C517C8B83E2 /* Pods-ProximitisObjCDemo.debug.xcconfig */,
-				57E60F99846C0E0FE21560F5 /* Pods-ProximitisObjCDemo.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49A51666227AE4F7007D2791 /* ProximitisObjCDemo */ = {
+		49139369232E724B008A197C /* ProximitisObjCDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49A5167D227AE4F8007D2791 /* Build configuration list for PBXNativeTarget "ProximitisObjCDemo" */;
+			buildConfigurationList = 49139380232E724B008A197C /* Build configuration list for PBXNativeTarget "ProximitisObjCDemo" */;
 			buildPhases = (
-				2B185803B1B4C1B98B7A0DA6 /* [CP] Check Pods Manifest.lock */,
-				49A51663227AE4F7007D2791 /* Sources */,
-				49A51664227AE4F7007D2791 /* Frameworks */,
-				49A51665227AE4F7007D2791 /* Resources */,
-				6D7FE23C4D14FED398E95353 /* [CP] Embed Pods Frameworks */,
-				49FC374D227AE6AB00E47248 /* Embed Frameworks */,
+				49139366232E724B008A197C /* Sources */,
+				49139367232E724B008A197C /* Frameworks */,
+				49139368232E724B008A197C /* Resources */,
+				49139387232E726B008A197C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,29 +105,24 @@
 			);
 			name = ProximitisObjCDemo;
 			productName = ProximitisObjCDemo;
-			productReference = 49A51667227AE4F7007D2791 /* ProximitisObjCDemo.app */;
+			productReference = 4913936A232E724B008A197C /* ProximitisObjCDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		49A5165F227AE4F7007D2791 /* Project object */ = {
+		49139362232E724A008A197C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = Proximitis;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Proximitis s.r.o.";
 				TargetAttributes = {
-					49A51666227AE4F7007D2791 = {
-						CreatedOnToolsVersion = 10.2.1;
-						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-						};
+					49139369232E724B008A197C = {
+						CreatedOnToolsVersion = 10.3;
 					};
 				};
 			};
-			buildConfigurationList = 49A51662227AE4F7007D2791 /* Build configuration list for PBXProject "ProximitisObjCDemo" */;
+			buildConfigurationList = 49139365232E724A008A197C /* Build configuration list for PBXProject "ProximitisObjCDemo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -159,103 +130,54 @@
 				en,
 				Base,
 			);
-			mainGroup = 49A5165E227AE4F7007D2791;
-			productRefGroup = 49A51668227AE4F7007D2791 /* Products */;
+			mainGroup = 49139361232E724A008A197C;
+			productRefGroup = 4913936B232E724B008A197C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49A51666227AE4F7007D2791 /* ProximitisObjCDemo */,
+				49139369232E724B008A197C /* ProximitisObjCDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		49A51665227AE4F7007D2791 /* Resources */ = {
+		49139368232E724B008A197C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49A51677227AE4F8007D2791 /* LaunchScreen.storyboard in Resources */,
-				49A51674227AE4F8007D2791 /* Assets.xcassets in Resources */,
-				49A51672227AE4F7007D2791 /* Main.storyboard in Resources */,
+				4913937A232E724B008A197C /* LaunchScreen.storyboard in Resources */,
+				49139377232E724B008A197C /* Assets.xcassets in Resources */,
+				49139375232E724B008A197C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		2B185803B1B4C1B98B7A0DA6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ProximitisObjCDemo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6D7FE23C4D14FED398E95353 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ProximitisObjCDemo/Pods-ProximitisObjCDemo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProximitisObjCDemo/Pods-ProximitisObjCDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		49A51663227AE4F7007D2791 /* Sources */ = {
+		49139366232E724B008A197C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49A5167A227AE4F8007D2791 /* main.m in Sources */,
-				49A5166C227AE4F7007D2791 /* AppDelegate.m in Sources */,
+				4913937D232E724B008A197C /* main.m in Sources */,
+				4913936F232E724B008A197C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		49A51670227AE4F7007D2791 /* Main.storyboard */ = {
+		49139373232E724B008A197C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				49A51671227AE4F7007D2791 /* Base */,
+				49139374232E724B008A197C /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		49A51675227AE4F8007D2791 /* LaunchScreen.storyboard */ = {
+		49139378232E724B008A197C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				49A51676227AE4F8007D2791 /* Base */,
+				49139379232E724B008A197C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -263,7 +185,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		49A5167B227AE4F8007D2791 /* Debug */ = {
+		4913937E232E724B008A197C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -314,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -322,7 +244,7 @@
 			};
 			name = Debug;
 		};
-		49A5167C227AE4F8007D2791 /* Release */ = {
+		4913937F232E724B008A197C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -367,7 +289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -375,52 +297,44 @@
 			};
 			name = Release;
 		};
-		49A5167E227AE4F8007D2791 /* Debug */ = {
+		49139381232E724B008A197C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 784AD654A9F18C517C8B83E2 /* Pods-ProximitisObjCDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZJJTABZB8;
+				DEVELOPMENT_TEAM = G42JHX722L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift\"",
-					../,
+					"$(PROJECT_DIR)/ProximitisObjCDemo/Frameworks",
 				);
 				INFOPLIST_FILE = ProximitisObjCDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cz.markalous.ProximitisObjcTest;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.proximitis.ProximitisObjCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		49A5167F227AE4F8007D2791 /* Release */ = {
+		49139382232E724B008A197C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57E60F99846C0E0FE21560F5 /* Pods-ProximitisObjCDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZJJTABZB8;
+				DEVELOPMENT_TEAM = G42JHX722L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Realm\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift\"",
-					../,
+					"$(PROJECT_DIR)/ProximitisObjCDemo/Frameworks",
 				);
 				INFOPLIST_FILE = ProximitisObjCDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cz.markalous.ProximitisObjcTest;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.proximitis.ProximitisObjCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -428,25 +342,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49A51662227AE4F7007D2791 /* Build configuration list for PBXProject "ProximitisObjCDemo" */ = {
+		49139365232E724A008A197C /* Build configuration list for PBXProject "ProximitisObjCDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49A5167B227AE4F8007D2791 /* Debug */,
-				49A5167C227AE4F8007D2791 /* Release */,
+				4913937E232E724B008A197C /* Debug */,
+				4913937F232E724B008A197C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49A5167D227AE4F8007D2791 /* Build configuration list for PBXNativeTarget "ProximitisObjCDemo" */ = {
+		49139380232E724B008A197C /* Build configuration list for PBXNativeTarget "ProximitisObjCDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49A5167E227AE4F8007D2791 /* Debug */,
-				49A5167F227AE4F8007D2791 /* Release */,
+				49139381232E724B008A197C /* Debug */,
+				49139382232E724B008A197C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 49A5165F227AE4F7007D2791 /* Project object */;
+	rootObject = 49139362232E724A008A197C /* Project object */;
 }

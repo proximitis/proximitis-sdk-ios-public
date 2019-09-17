@@ -15,7 +15,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
     //Spustí službu Proximitis
     // Doplňte vlastní App Key
-    Proximitis.start(with: “your_appkey”)
+    Proximitis.shared.start(with: “your_appkey”)
 
     //Odkomentujte pro zapnutí debug logování
     // Proximitis.setDebugging(true)
@@ -57,7 +57,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         completionHandler()
     }
-
 }
 ```
 
@@ -70,21 +69,18 @@ extension AppDelegate {
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 				
         //Zpracuje aktualizace na pozadí
-        Proximitis.performBackgroundFetch {
+        Proximitis.shared.performBackgroundFetch {
             completionHandler(.newData)
         }
-
     }
-
 }
 ```
 
 
 5. V nastavení Targetu jděte do záložky `Capabilities -> Background Modes` a zapněte tyto módy:
 
-- Location updates
 - Background fetch 
-- Remote notifications
+- Uses Bluetooth LE accessories
 
 
 6. Do Info.plist zkopírujte následující kód a upravte vlastní popisky pro používání polohy
@@ -141,23 +137,61 @@ Volitelné parametry:
 - `textFontSize`
 - `lineHeight`
 
+### Seznam kampaní
+
+Seznam kampaní zobrazuje třída `ProximitisListViewController`. Pokud potřebujete přístup k datům, můžete využít proměnou `campaigns`, která obsahuje všechny relevantní kampaně.
+
 
 ### Detail kampaně typ PAGE
 
-Jednotlivé vizuální bloky při vykreslování detailu kampaně typu `PAGE` lze přepsat.
-Metody vždy přebírají parametr `block` a pozici `y` a vracejí výšku výsledného bloku. 
+Data pro detail kampaní jsou řazena do jednotlivých, na sebe navazujícíh bloků. K těm můžeme přistupovat pomocí proměné `blocks: Array<DetailBlock>`.
+Pokud nechete využít automatické vykreslování detailu kampaně, můžete takto přistupovat k jednotlivých blokům, případně přepsat metody, které vykreslují jednotlivé bloky v  `ProximitisDetail` protocolu.
 
-Jednotlivé bloky jsou:
+`- func viewForTitle(block: DetailBlock) -> UIView`
+`- func viewForHeading(block: DetailBlock) -> UIView`
+`- func viewForParagraph(block: DetailBlock) -> UIView`
+`- func viewForImage(block: DetailBlock) -> UIView`
+`- func viewForOrderedList(block: DetailBlock) -> UIView`
+`- func viewForUnorderedList(block: DetailBlock) -> UIView`
+`- func viewForButton(block: DetailBlock) -> UIView`
+`- func viewForCustom(block: DetailBlock) -> UIView`
 
-- `drawTitle(block: Block, y: Double) -> Double`
-- `drawHeading(block: Block, y: Double) -> Double`
-- `drawText(block: Block, y: Double) -> Double`
-- `drawImage(block: Block, y: Double) -> Double`
-- `drawOrderedList(block: Block, y: Double) -> Double`
-- `drawUnorderedList(block: Block, y: Double) -> Double`
-- `drawButton(block: Block, y: Double) -> Double`
+
+V případě, že data obsahují kromě obvyklých typů bloků i vlastní, volitelný blok, lze tento blok vykreslit pomocí metody `viewForCustom(block: DetailBlock) -> UIView`.
+
+
+### DetailBlock
+
+`DetailBlock` se skládá z  typu `DetailBlockType` a jednotlivých parametrů uložených v `parameters: Dictionary<String, Any>`. 
 
 
 ### Status bar
 
 Nastavení stylu status baru pro View Controllery používané službou Proximitis můžete provést nastavením `ProximitisAppearance.setStatusBarStyle(.light)`
+
+
+### Vlastní View pro zobrazení prázdného seznamu, nebo chyby uživateli
+
+Třídy `ProximitisListViewController`,  `ProximitisPageViewController` a `ProximitisWebViewController` mohou uživately graficky zobrazovat upozoznění pokud nastane chyba, nebo je prázdný seznam kampaní. Info obrazovka se uživateli zobrazí automaticky, Lze si však vytvořit vlastní ztvárnění, které ProximitisFramework zobrazí na pozadí ViewControlleru.
+
+`   override var infoScreen: UIView? {
+                get {
+                    return super.infoScreen
+                }
+                set {
+                    super.infoScreen = self.emptyScreen
+                }
+        }
+
+    var emptyScreen: UIView {
+
+            let infoView = UIView()
+
+            //.....
+
+            return infoView
+     }
+`
+
+
+
