@@ -2,9 +2,7 @@
 
 ## Instalace SDK 
 
-1. Nainstalujte si databázové řešení Realm - https://realm.io
-2. Stáhněte Proximitis SDK z githubu
-3. Přetáhněte `ProximitisFramework.framework` do vašeho projektu a přidejte ho do `Embedded Binaries`
+Stáhněte Proximitis SDK z Bitbucket repozitáře. Přetáhněte `ProximitisFramework.framework` do vašeho projektu a přidejte ho do `Embedded Binaries`
 
 ## Start SDK 
 
