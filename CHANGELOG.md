@@ -3,6 +3,7 @@
 ## Version 4 [2020-03-6]
 
 - Compiled for Xcode 11, Swift 5.1.0
+- WKWebView support
 
 ## Version 3 [2019-09-17]
 
