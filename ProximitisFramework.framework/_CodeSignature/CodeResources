@@ -6,35 +6,55 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		tnHda99p+jX2Zd7nPrePAnLGoU4=
+		M/SMz2s6Ohj8vXe9QAWBfXnUxGo=
 		</data>
 		<key>Headers/ProximitisFramework-Swift.h</key>
 		<data>
-		QxsRwcVArLpDGQ+JPsfBtLFrz40=
+		+hvH5+wCgsrg/0A6WkRpvbM1XFs=
 		</data>
 		<key>Headers/ProximitisFramework.h</key>
 		<data>
-		Ke/fY7OG1RJaLquJaFtL6+52G/c=
+		8z5xRbwWJWuCnJB+Qd9qlL1VVpY=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		rW+sCNUon2S5CpXe2hQmcDPh/Vo=
+		dx3w0+kWlfjnkA4xy54HZxlktJ4=
+		</data>
+		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<data>
+		NQeM65lJyKLMu5mfbL0kIoF8ewc=
+		</data>
+		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<data>
+		6S6Vbi84UOnSo3Gsm3eldmGLn2w=
+		</data>
+		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
+		<data>
+		cfVqzPLcNnvfoIgChufdgqf/pVs=
 		</data>
 		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		P1tcygPDr46WMUx7JdjaTuu1ulM=
+		NQeM65lJyKLMu5mfbL0kIoF8ewc=
+		</data>
+		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftinterface</key>
+		<data>
+		6S6Vbi84UOnSo3Gsm3eldmGLn2w=
 		</data>
 		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		RyflGvE41ANCuli6PvW4e/CYgFE=
+		cfVqzPLcNnvfoIgChufdgqf/pVs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		KvWWt0WSehiS9DddV4yGdTJb+fA=
 		</data>
-		<key>ProximitisListTableViewCell.nib</key>
+		<key>ProximitisListTableViewCell.nib/objects-13.0+.nib</key>
 		<data>
-		gzuckhQ2f7Sva+FVM6k0jt+kG30=
+		yNZ+/GfkIZBB0uE0P8ycRP0tuIA=
+		</data>
+		<key>ProximitisListTableViewCell.nib/runtime.nib</key>
+		<data>
+		dwMkOXtuMKX4GIAW9dRq8xWpHuo=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -43,35 +63,63 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DUPT67uC82CVBQh/xTRHsygXoRYiD4PoCasYVQcg7h4=
+			wkW9gGHprqOC4gH5cMwV81ffnCfn3kaigkEoJlmmWPQ=
 			</data>
 		</dict>
 		<key>Headers/ProximitisFramework-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PDUkkUStMPgLcnhrMUL+zh8ouP2HfF2BfeF4GObWqpw=
+			HkGdvFBYj6gNjEyQIHArtua8C2IRGxcbAW8BVXBxgQw=
 			</data>
 		</dict>
 		<key>Headers/ProximitisFramework.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vkjuAHpv4plbjKLpzJD4tlin/XVOhPuGH0qA1NdLQ+0=
+			TO6WasZTb0G6GarCgv0JGTGfablY5eZ7sKmCEbb7KzQ=
+			</data>
+		</dict>
+		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xDN46DvvmNCfmazqQ3U+4LJQkzejChWfLF36Odex/Vc=
+			</data>
+		</dict>
+		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0jCvXQ5vZVnqCRkFJnTP5kS26sxoVKmT3ET2FnV60BQ=
+			</data>
+		</dict>
+		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			k/frX0qdLsqXYcuPp8bs7WK3SFHOVkr1C/ZKXfRyyoo=
 			</data>
 		</dict>
 		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dJcDpQVJyAEO7oQBY1UOdDnKP316TerJsIGrGc3BQKY=
+			xDN46DvvmNCfmazqQ3U+4LJQkzejChWfLF36Odex/Vc=
+			</data>
+		</dict>
+		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0jCvXQ5vZVnqCRkFJnTP5kS26sxoVKmT3ET2FnV60BQ=
 			</data>
 		</dict>
 		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ji3Vj1vICuL6dZMBr7980uLEMYatCOmZzg3Rhn+Y3BQ=
+			k/frX0qdLsqXYcuPp8bs7WK3SFHOVkr1C/ZKXfRyyoo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -81,11 +129,18 @@
 			5oBUArZBwsIV/Du6R3rrEGiVHu+0lygxpTk3Ax3OBUw=
 			</data>
 		</dict>
-		<key>ProximitisListTableViewCell.nib</key>
+		<key>ProximitisListTableViewCell.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G9Eb/hLyFE+9L/IAcayHhNYd50OvFUGrneoscFHi8X8=
+			mj9Q4MzwRcaJQmMQWGR/pufq70uX9GznYPiqf2HRARo=
+			</data>
+		</dict>
+		<key>ProximitisListTableViewCell.nib/runtime.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VPQ+LnlCgCTKMJWRTb7qmw9leHfTTDssdQaFlZrG4LU=
 			</data>
 		</dict>
 	</dict>

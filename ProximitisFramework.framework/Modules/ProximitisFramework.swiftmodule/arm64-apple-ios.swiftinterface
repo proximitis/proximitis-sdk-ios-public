@@ -1,0 +1,856 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name ProximitisFramework
+import AVKit
+import CoreBluetooth
+import CoreLocation
+import Foundation
+@_exported import ProximitisFramework
+import Swift
+import SystemConfiguration
+import UIKit
+import UserNotifications
+import WebKit
+@objc open class ProximitisWebViewController : ProximitisFramework.ProximitisDetailViewController {
+  @objc open var infoScreen: UIKit.UIView!
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension ProximitisWebViewController : WebKit.WKNavigationDelegate {
+  @objc dynamic public func webView(_ webView: WebKit.WKWebView, didFail navigation: WebKit.WKNavigation!, withError error: Swift.Error)
+  @objc dynamic public func webView(_ webView: WebKit.WKWebView, didFinish navigation: WebKit.WKNavigation!)
+}
+@objc public class Beacon : ProximitisFramework.DefaultObject, Foundation.NSCoding {
+  @objc override public class func primaryKey() -> Swift.String?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc public func isAllowedToUpdate() -> Swift.Bool
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc required public convenience init?(coder aDecoder: Foundation.NSCoder)
+  @objc required dynamic public init()
+  @objc deinit
+}
+public enum DetailBlockType {
+  case title
+  case image
+  case heading
+  case paragraph
+  case orderedList
+  case unorderedList
+  case button
+  case custom
+  public static func == (a: ProximitisFramework.DetailBlockType, b: ProximitisFramework.DetailBlockType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@objc public class DetailBlockCreator : ObjectiveC.NSObject {
+  public static func createBlocks(json: ProximitisFramework.JSON?) -> Swift.Array<ProximitisFramework.DetailBlock>
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension UIViewController {
+  public var topDistance: CoreGraphics.CGFloat {
+    get
+  }
+}
+@objc public class BeaconManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension BeaconManager : CoreLocation.CLLocationManagerDelegate {
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didEnterRegion region: CoreLocation.CLRegion)
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didExitRegion region: CoreLocation.CLRegion)
+}
+public enum ReachabilityError : Swift.Error {
+  case FailedToCreateWithAddress(Darwin.sockaddr_in)
+  case FailedToCreateWithHostname(Swift.String)
+  case UnableToSetCallback
+  case UnableToSetDispatchQueue
+  case UnableToGetInitialFlags
+}
+@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
+public var ReachabilityChangedNotification: Foundation.NSNotification.Name
+extension NSNotification.Name {
+  public static var reachabilityChanged: Foundation.Notification.Name
+}
+public class Reachability {
+  public typealias NetworkReachable = (ProximitisFramework.Reachability) -> ()
+  public typealias NetworkUnreachable = (ProximitisFramework.Reachability) -> ()
+  @available(*, unavailable, renamed: "Connection")
+  public enum NetworkStatus : Swift.CustomStringConvertible {
+    case notReachable
+    case reachableViaWiFi
+    case reachableViaWWAN
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: ProximitisFramework.Reachability.NetworkStatus, b: ProximitisFramework.Reachability.NetworkStatus) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public enum Connection : Swift.CustomStringConvertible {
+    case none
+    case wifi
+    case cellular
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: ProximitisFramework.Reachability.Connection, b: ProximitisFramework.Reachability.Connection) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public var whenReachable: ProximitisFramework.Reachability.NetworkReachable?
+  public var whenUnreachable: ProximitisFramework.Reachability.NetworkUnreachable?
+  final public let reachableOnWWAN: Swift.Bool
+  public var allowsCellularConnection: Swift.Bool
+  public var notificationCenter: Foundation.NotificationCenter
+  public var currentReachabilityString: Swift.String {
+    get
+  }
+  @available(*, unavailable, renamed: "connection")
+  public var currentReachabilityStatus: ProximitisFramework.Reachability.Connection {
+    get
+  }
+  public var connection: ProximitisFramework.Reachability.Connection {
+    get
+  }
+  required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
+  public convenience init?(hostname: Swift.String, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
+  public convenience init?(queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
+  @objc deinit
+}
+extension Reachability {
+  public func startNotifier() throws
+  public func stopNotifier()
+  public var isReachable: Swift.Bool {
+    get
+  }
+  public var isReachableViaWWAN: Swift.Bool {
+    get
+  }
+  public var isReachableViaWiFi: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+@objc public class ProximitisConfigurator : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class BeaconFactory : ObjectiveC.NSObject {
+  @objc public class func shared() -> ProximitisFramework.BeaconFactory
+  public func saveBeacons()
+  public func find(id: Swift.String, create: Swift.Bool? = false) -> ProximitisFramework.Beacon?
+  public func save(beacon: ProximitisFramework.Beacon?)
+  public func delete(beacon: ProximitisFramework.Beacon?)
+  public func delete(id: Swift.String?)
+  @objc public func findBeacon(namespace: Swift.String, instance: Swift.String, create: Swift.Bool = false) -> ProximitisFramework.Beacon?
+  @objc public func setUpdate(beacon: ProximitisFramework.Beacon)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class DefaultObject : ObjectiveC.NSObject {
+  @objc override required dynamic public init()
+  @objc dynamic open var id: Swift.String
+  public class func primaryKey() -> Swift.String?
+  @objc deinit
+}
+@objc open class ProximitisNavigationViewController : UIKit.UINavigationController {
+  @objc override dynamic open func viewDidLoad()
+  @objc open func addDismissButton()
+  @objc public func close()
+  @available(iOS 5.0, *)
+  @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public class ObjectManager : ObjectiveC.NSObject {
+  public class func shared() -> ProximitisFramework.ObjectManager
+  public func find<ClassType>(type: ClassType.Type, id: Swift.String?, create: Swift.Bool? = false) -> ClassType? where ClassType : ProximitisFramework.DefaultObject
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class Campaign : ProximitisFramework.DefaultObject, Foundation.NSCoding {
+  @objc public var notificationTitle: Swift.String
+  @objc public var notificationText: Swift.String
+  @objc public var notificationImage: Swift.String?
+  @objc public var type: Swift.String
+  @objc public var detailUrl: Swift.String?
+  @objc public var listImage: Swift.String
+  @objc public var listTitle: Swift.String
+  @objc public var listText: Swift.String
+  @objc public var isActive: Swift.Bool
+  @objc public var inAppEvent: Swift.String
+  @objc public var cooldown: Swift.Int
+  @objc public var maximumNotificationsPerUser: Swift.Int
+  @objc public var created: Foundation.Date
+  @objc public var updated: Foundation.Date?
+  @objc public var notificationSent: Foundation.Date?
+  @objc public var notificationCount: Swift.Int
+  @objc override public class func primaryKey() -> Swift.String?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc public func needsUpdate() -> Swift.Bool
+  @objc public func shouldNotify() -> Swift.Bool
+  @objc public func listImageName() -> Swift.String
+  @objc public func notificationImageName() -> Swift.String
+  @objc public func image() -> UIKit.UIImage?
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc required public convenience init?(coder aDecoder: Foundation.NSCoder)
+  @objc required dynamic public init()
+  @objc deinit
+}
+@objc open class ProximitisDetailViewController : ProximitisFramework.ProximitisDefaultViewController {
+  @objc public var campaign: ProximitisFramework.Campaign?
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public class DetailBlock : ObjectiveC.NSObject {
+  public var type: ProximitisFramework.DetailBlockType?
+  public var parameters: Swift.Dictionary<Swift.String, Any>?
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum SwiftyJSONError : Swift.Int, Swift.Error {
+  case unsupportedType
+  case indexOutOfBounds
+  case elementTooDeep
+  case wrongType
+  case notExist
+  case invalidJSON
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension SwiftyJSONError : Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public enum Type : Swift.Int {
+  case number
+  case string
+  case bool
+  case array
+  case dictionary
+  case null
+  case unknown
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct JSON {
+  public init(data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions = []) throws
+  public init(_ object: Any)
+  public init(parseJSON jsonString: Swift.String)
+  public mutating func merge(with other: ProximitisFramework.JSON) throws
+  public func merged(with other: ProximitisFramework.JSON) throws -> ProximitisFramework.JSON
+  public var type: ProximitisFramework.Type {
+    get
+    }
+  public var error: ProximitisFramework.SwiftyJSONError? {
+    get
+    }
+  public var object: Any {
+    get
+    set(newValue)
+  }
+  @available(*, unavailable, renamed: "null")
+  public static var nullJSON: ProximitisFramework.JSON {
+    get
+  }
+  public static var null: ProximitisFramework.JSON {
+    get
+  }
+}
+public enum Index<T> : Swift.Comparable {
+  case array(Swift.Int)
+  case dictionary(Swift.DictionaryIndex<Swift.String, T>)
+  case null
+  public static func == (lhs: ProximitisFramework.Index<T>, rhs: ProximitisFramework.Index<T>) -> Swift.Bool
+  public static func < (lhs: ProximitisFramework.Index<T>, rhs: ProximitisFramework.Index<T>) -> Swift.Bool
+}
+public typealias JSONIndex = ProximitisFramework.Index<ProximitisFramework.JSON>
+public typealias JSONRawIndex = ProximitisFramework.Index<Any>
+extension JSON : Swift.Collection {
+  public typealias Index = ProximitisFramework.JSONRawIndex
+  public var startIndex: ProximitisFramework.JSON.Index {
+    get
+  }
+  public var endIndex: ProximitisFramework.JSON.Index {
+    get
+  }
+  public func index(after i: ProximitisFramework.JSON.Index) -> ProximitisFramework.JSON.Index
+  public subscript(position: ProximitisFramework.JSON.Index) -> (Swift.String, ProximitisFramework.JSON) {
+    get
+  }
+  public typealias Element = (Swift.String, ProximitisFramework.JSON)
+  public typealias Iterator = Swift.IndexingIterator<ProximitisFramework.JSON>
+  public typealias SubSequence = Swift.Slice<ProximitisFramework.JSON>
+  public typealias Indices = Swift.DefaultIndices<ProximitisFramework.JSON>
+}
+public enum JSONKey {
+  case index(Swift.Int)
+  case key(Swift.String)
+}
+public protocol JSONSubscriptType {
+  var jsonKey: ProximitisFramework.JSONKey { get }
+}
+extension Int : ProximitisFramework.JSONSubscriptType {
+  public var jsonKey: ProximitisFramework.JSONKey {
+    get
+  }
+}
+extension String : ProximitisFramework.JSONSubscriptType {
+  public var jsonKey: ProximitisFramework.JSONKey {
+    get
+  }
+}
+extension JSON {
+  public subscript(path: [ProximitisFramework.JSONSubscriptType]) -> ProximitisFramework.JSON {
+    get
+    set(newValue)
+  }
+  public subscript(path: ProximitisFramework.JSONSubscriptType...) -> ProximitisFramework.JSON {
+    get
+    set(newValue)
+  }
+}
+extension JSON : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public init(extendedGraphemeClusterLiteral value: Swift.StringLiteralType)
+  public init(unicodeScalarLiteral value: Swift.StringLiteralType)
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension JSON : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.IntegerLiteralType)
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension JSON : Swift.ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: Swift.BooleanLiteralType)
+  public typealias BooleanLiteralType = Swift.BooleanLiteralType
+}
+extension JSON : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: Swift.FloatLiteralType)
+  public typealias FloatLiteralType = Swift.FloatLiteralType
+}
+extension JSON : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Any)...)
+  public typealias Key = Swift.String
+  public typealias Value = Any
+}
+extension JSON : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Any...)
+  public typealias ArrayLiteralElement = Any
+}
+extension JSON : Swift.RawRepresentable {
+  public init?(rawValue: Any)
+  public var rawValue: Any {
+    get
+  }
+  public func rawData(options opt: Foundation.JSONSerialization.WritingOptions = JSONSerialization.WritingOptions(rawValue: 0)) throws -> Foundation.Data
+  public func rawString(_ encoding: Swift.String.Encoding = .utf8, options opt: Foundation.JSONSerialization.WritingOptions = .prettyPrinted) -> Swift.String?
+  public func rawString(_ options: [ProximitisFramework.writingOptionsKeys : Any]) -> Swift.String?
+  public typealias RawValue = Any
+}
+extension JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension JSON {
+  public var array: [ProximitisFramework.JSON]? {
+    get
+  }
+  public var arrayValue: [ProximitisFramework.JSON] {
+    get
+  }
+  public var arrayObject: [Any]? {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var dictionary: [Swift.String : ProximitisFramework.JSON]? {
+    get
+  }
+  public var dictionaryValue: [Swift.String : ProximitisFramework.JSON] {
+    get
+  }
+  public var dictionaryObject: [Swift.String : Any]? {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var bool: Swift.Bool? {
+    get
+    set(newValue)
+  }
+  public var boolValue: Swift.Bool {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var string: Swift.String? {
+    get
+    set(newValue)
+  }
+  public var stringValue: Swift.String {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var number: Foundation.NSNumber? {
+    get
+    set(newValue)
+  }
+  public var numberValue: Foundation.NSNumber {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var null: Foundation.NSNull? {
+    get
+    set(newValue)
+  }
+  public func exists() -> Swift.Bool
+}
+extension JSON {
+  public var url: Foundation.URL? {
+    get
+    set(newValue)
+  }
+}
+extension JSON {
+  public var double: Swift.Double? {
+    get
+    set(newValue)
+  }
+  public var doubleValue: Swift.Double {
+    get
+    set(newValue)
+  }
+  public var float: Swift.Float? {
+    get
+    set(newValue)
+  }
+  public var floatValue: Swift.Float {
+    get
+    set(newValue)
+  }
+  public var int: Swift.Int? {
+    get
+    set(newValue)
+  }
+  public var intValue: Swift.Int {
+    get
+    set(newValue)
+  }
+  public var uInt: Swift.UInt? {
+    get
+    set(newValue)
+  }
+  public var uIntValue: Swift.UInt {
+    get
+    set(newValue)
+  }
+  public var int8: Swift.Int8? {
+    get
+    set(newValue)
+  }
+  public var int8Value: Swift.Int8 {
+    get
+    set(newValue)
+  }
+  public var uInt8: Swift.UInt8? {
+    get
+    set(newValue)
+  }
+  public var uInt8Value: Swift.UInt8 {
+    get
+    set(newValue)
+  }
+  public var int16: Swift.Int16? {
+    get
+    set(newValue)
+  }
+  public var int16Value: Swift.Int16 {
+    get
+    set(newValue)
+  }
+  public var uInt16: Swift.UInt16? {
+    get
+    set(newValue)
+  }
+  public var uInt16Value: Swift.UInt16 {
+    get
+    set(newValue)
+  }
+  public var int32: Swift.Int32? {
+    get
+    set(newValue)
+  }
+  public var int32Value: Swift.Int32 {
+    get
+    set(newValue)
+  }
+  public var uInt32: Swift.UInt32? {
+    get
+    set(newValue)
+  }
+  public var uInt32Value: Swift.UInt32 {
+    get
+    set(newValue)
+  }
+  public var int64: Swift.Int64? {
+    get
+    set(newValue)
+  }
+  public var int64Value: Swift.Int64 {
+    get
+    set(newValue)
+  }
+  public var uInt64: Swift.UInt64? {
+    get
+    set(newValue)
+  }
+  public var uInt64Value: Swift.UInt64 {
+    get
+    set(newValue)
+  }
+}
+extension JSON : Swift.Comparable {
+}
+public func == (lhs: ProximitisFramework.JSON, rhs: ProximitisFramework.JSON) -> Swift.Bool
+public func <= (lhs: ProximitisFramework.JSON, rhs: ProximitisFramework.JSON) -> Swift.Bool
+public func >= (lhs: ProximitisFramework.JSON, rhs: ProximitisFramework.JSON) -> Swift.Bool
+public func > (lhs: ProximitisFramework.JSON, rhs: ProximitisFramework.JSON) -> Swift.Bool
+public func < (lhs: ProximitisFramework.JSON, rhs: ProximitisFramework.JSON) -> Swift.Bool
+public enum writingOptionsKeys {
+  case jsonSerialization
+  case castNilToNSNull
+  case maxObjextDepth
+  case encoding
+  public static func == (a: ProximitisFramework.writingOptionsKeys, b: ProximitisFramework.writingOptionsKeys) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension JSON : Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension UIDevice {
+  public static var modelID: Swift.String
+}
+@objc public protocol FontProperties {
+  @objc var fontName: Swift.String? { get set }
+  @objc var color: UIKit.UIColor { get set }
+  @objc var fontSize: CoreGraphics.CGFloat { get set }
+}
+@objc open class BasicStyles : ObjectiveC.NSObject, ProximitisFramework.FontProperties {
+  @objc public var fontName: Swift.String?
+  @objc public var color: UIKit.UIColor
+  @objc public var fontSize: CoreGraphics.CGFloat
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class SwiftyMarkdown : ObjectiveC.NSObject {
+  open var h1: ProximitisFramework.BasicStyles
+  open var h2: ProximitisFramework.BasicStyles
+  open var h3: ProximitisFramework.BasicStyles
+  open var h4: ProximitisFramework.BasicStyles
+  open var h5: ProximitisFramework.BasicStyles
+  open var h6: ProximitisFramework.BasicStyles
+  open var body: ProximitisFramework.BasicStyles
+  open var link: ProximitisFramework.BasicStyles
+  open var bold: ProximitisFramework.BasicStyles
+  open var italic: ProximitisFramework.BasicStyles
+  open var code: ProximitisFramework.BasicStyles
+  public init(string: Swift.String)
+  public init?(url: Foundation.URL)
+  open func setFontSizeForAllStyles(with size: CoreGraphics.CGFloat)
+  open func setFontColorForAllStyles(with color: UIKit.UIColor)
+  open func setFontNameForAllStyles(with name: Swift.String)
+  open func attributedString() -> Foundation.NSAttributedString
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension UIView {
+  public func tapAction(action: (() -> Swift.Void)?)
+}
+@objc public class Proximitis : ObjectiveC.NSObject {
+  @objc public class func setDebugging(_ debug: Swift.Bool)
+  @objc public func start(with applicationKey: Swift.String)
+  @objc public static func proximitisDirectoryURL() -> Foundation.URL
+  @objc public static func documentsDirectoryURL() -> Foundation.URL
+  @objc public static var applicationKey: Swift.String {
+    @objc get
+  }
+  @objc public class func logEvents(completion: @escaping () -> ())
+  @objc public class func openCampaignDetailInModal(campaignID: Swift.String)
+  @objc public class func applicationDidBecomeActive()
+  @objc public class func applicationDidEnterBackground()
+  @objc public class func makeCampaignDetailViewController(campaign: ProximitisFramework.Campaign) -> ProximitisFramework.ProximitisDetailViewController?
+  @objc public class func debug(_ text: Swift.String)
+  @objc public static var shared: ProximitisFramework.Proximitis {
+    @objc get
+  }
+  @objc public func performBackgroundFetch(completion: @escaping () -> ())
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol ProximitisDetail {
+  @objc func viewForTitle(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc func viewForHeading(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc func viewForParagraph(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc func viewForImage(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc func viewForOrderedList(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc func viewForUnorderedList(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc func viewForButton(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc optional func viewForCustom(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+}
+@objc open class ProximitisPageViewController : ProximitisFramework.ProximitisDetailViewController {
+  final public let scrollView: UIKit.UIScrollView
+  @objc open var views: [UIKit.UIView]
+  @objc public var blocks: Swift.Array<ProximitisFramework.DetailBlock>?
+  open var previousBlockType: ProximitisFramework.DetailBlockType?
+  open var orderedListIndex: Swift.Int
+  open var fileName: Swift.String?
+  open var infoScreen: UIKit.UIView!
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @objc open func add(blockView: UIKit.UIView)
+  @objc open func attributedLabelWith(text: Foundation.NSAttributedString) -> UIKit.UILabel
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension ProximitisPageViewController : ProximitisFramework.ProximitisDetail {
+  @objc dynamic open func viewForTitle(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc dynamic open func viewForHeading(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc dynamic open func viewForParagraph(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc dynamic open func viewForImage(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc dynamic open func viewForOrderedList(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc dynamic open func viewForUnorderedList(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc dynamic open func viewForButton(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+  @objc dynamic open func viewForCustom(block: ProximitisFramework.DetailBlock) -> UIKit.UIView
+}
+@objc public class CustomButton : UIKit.UIButton {
+  public var userInfo: Any?
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc open class ProximitisDefaultViewController : UIKit.UIViewController {
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public enum EventType : Swift.String {
+  case newInstallation
+  case campaignDetailFromNotification
+  case campaignDetailFromList
+  case notification
+  case list
+  case appStarted
+  case appClosed
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public class EventFactory : ObjectiveC.NSObject {
+  public class func shared() -> ProximitisFramework.EventFactory
+  public class func create(type: ProximitisFramework.EventType, campaignId: Swift.String?, beacon: ProximitisFramework.Beacon?)
+  public func save(event: ProximitisFramework.Event?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class ProximitisNotificationClient : ObjectiveC.NSObject {
+  @objc public func scheduleNotification(for campaign: ProximitisFramework.Campaign)
+  @objc public class func notificationTapped(response: UserNotifications.UNNotificationResponse)
+  @objc override dynamic public init()
+  @objc deinit
+}
+open class ProximitisActivityIndicator {
+  open func showProgressView()
+  open func hideProgressView()
+  @objc deinit
+}
+@objc public class Event : ProximitisFramework.DefaultObject, Foundation.NSCoding {
+  override public class func primaryKey() -> Swift.String?
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc required public convenience init?(coder aDecoder: Foundation.NSCoder)
+  @objc required dynamic public init()
+  @objc deinit
+}
+extension Bool {
+  public func stringValue() -> Swift.String
+}
+@objc public class CampaignManager : ObjectiveC.NSObject {
+  @objc public class func updateAllCampaigns(completion: @escaping () -> ())
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class JSONFileManager : ObjectiveC.NSObject {
+  public class func save(json: ProximitisFramework.JSON, fileName: Swift.String)
+  public class func load(fileName: Swift.String) -> ProximitisFramework.JSON?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct DetailType {
+}
+@objc public class CampaignFactory : ObjectiveC.NSObject {
+  @objc public class func shared() -> ProximitisFramework.CampaignFactory
+  public func allCampaigns() -> Swift.Array<ProximitisFramework.Campaign>
+  public func saveCampaigns()
+  public func find(id: Swift.String, create: Swift.Bool? = false) -> ProximitisFramework.Campaign?
+  public func save(campaign: ProximitisFramework.Campaign?)
+  public func delete(campaign: ProximitisFramework.Campaign?)
+  public func delete(id: Swift.String?)
+  @objc public func setUpdate(campaign: ProximitisFramework.Campaign)
+  @objc public func setNotified(campaign: ProximitisFramework.Campaign)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc open class ObjectParser : ObjectiveC.NSObject {
+  open func parse<ClassType>(json: ProximitisFramework.JSON?, of type: ClassType.Type) -> ProximitisFramework.DefaultObject? where ClassType : ProximitisFramework.DefaultObject
+  open func parseObject<ClassType>(json: ProximitisFramework.JSON?, of type: ClassType.Type) -> ProximitisFramework.DefaultObject? where ClassType : ProximitisFramework.DefaultObject
+  open func writeBlock<ClassType>(json: ProximitisFramework.JSON, type: ClassType.Type, object: ProximitisFramework.DefaultObject) where ClassType : ProximitisFramework.DefaultObject
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum StatusBarStyle : Swift.Int {
+  case light
+  case dark
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class ProximitisAppearance : ObjectiveC.NSObject {
+  @objc public static func reloadTheme()
+  @objc public class func setStatusBar(_ style: ProximitisFramework.StatusBarStyle)
+  @objc public class func setPrimaryColor(_ color: UIKit.UIColor)
+  @objc public static var primaryColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc public class func setBackgroundColor(_ color: UIKit.UIColor)
+  @objc public static var backgroundColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc public class func setTitleColor(_ color: UIKit.UIColor)
+  @objc public static var titleColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc public class func setHeadingColor(_ color: UIKit.UIColor)
+  @objc public static var headingColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc public class func setTextColor(_ color: UIKit.UIColor)
+  @objc public static var textColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc public class func setButtonTextColor(_ color: UIKit.UIColor)
+  @objc public static var buttonTextColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc public class func setButtonColor(_ color: UIKit.UIColor)
+  @objc public static var buttonColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc public class func setSpacing(_ value: Swift.Double)
+  @objc public static var spacing: Swift.Double {
+    @objc get
+  }
+  @objc public class func setTitleFontSize(_ value: Swift.Double)
+  @objc public static var titleFontSize: Swift.Double {
+    @objc get
+  }
+  @objc public class func setHeadingFontSize(_ value: Swift.Double)
+  @objc public static var headingFontSize: Swift.Double {
+    @objc get
+  }
+  @objc public class func setTextFontSize(_ value: Swift.Double)
+  @objc public static var textFontSize: Swift.Double {
+    @objc get
+  }
+  @objc public class func setLineHeight(_ value: CoreGraphics.CGFloat)
+  @objc public static var lineHeight: CoreGraphics.CGFloat {
+    @objc get
+  }
+  @objc public class func setDismissButtonImage(_ image: UIKit.UIImage)
+  @objc public static var dismissButtonImage: UIKit.UIImage? {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class ProximitisInfoView : UIKit.UIView {
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc public init(offset: CoreGraphics.CGFloat, image: UIKit.UIImage?, text: Swift.String?)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@objc open class ProximitisListViewController : UIKit.UITableViewController {
+  @objc public var campaigns: Swift.Array<ProximitisFramework.Campaign>?
+  open var infoScreen: UIKit.UIView!
+  @objc public var separatorStyle: UIKit.UITableViewCell.SeparatorStyle
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @objc override dynamic open func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @objc override dynamic open func tableView(_ tableView: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreGraphics.CGFloat
+  @objc override dynamic open func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @objc override dynamic open func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+  @objc open func open(campaign: ProximitisFramework.Campaign)
+  @objc override dynamic public init(style: UIKit.UITableView.Style)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
