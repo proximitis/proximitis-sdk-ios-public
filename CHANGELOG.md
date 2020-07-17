@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 5 [2020-07-17]
+
+- Simulator support
+
 ## Version 4 [2020-03-6]
 
 - Compiled for Xcode 11, Swift 5.1.0

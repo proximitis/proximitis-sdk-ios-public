@@ -59,5 +59,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Potřebujeme vaši polohu vůči našim bluetooth zařínením umístěných u našich partnerů, abychom dokázali zjistit, okolo jakých prodejen se vyskytujete. Nesledujeme vaši GPS polohu.</string>
 </dict>
 </plist>

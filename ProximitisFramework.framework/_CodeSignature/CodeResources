@@ -6,55 +6,51 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		M/SMz2s6Ohj8vXe9QAWBfXnUxGo=
+		7TPn9gsIDTABFTzKwwaPHDzg5So=
 		</data>
 		<key>Headers/ProximitisFramework-Swift.h</key>
 		<data>
-		+hvH5+wCgsrg/0A6WkRpvbM1XFs=
+		6o08PIffwd0TBP7O/Yj8f6jFf1c=
 		</data>
 		<key>Headers/ProximitisFramework.h</key>
 		<data>
-		8z5xRbwWJWuCnJB+Qd9qlL1VVpY=
+		p9A7Lv1rWelK51Ka5uHytbyDH54=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		dx3w0+kWlfjnkA4xy54HZxlktJ4=
+		fYO8TRl20NyzxiO6D3VhWjbvmEQ=
 		</data>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<key>Modules/ProximitisFramework.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		NQeM65lJyKLMu5mfbL0kIoF8ewc=
+		ODNTMEGCmd09+I/ShZi+QhyP2uk=
 		</data>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<key>Modules/ProximitisFramework.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<data>
-		6S6Vbi84UOnSo3Gsm3eldmGLn2w=
+		ODNTMEGCmd09+I/ShZi+QhyP2uk=
 		</data>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
+		<key>Modules/ProximitisFramework.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		cfVqzPLcNnvfoIgChufdgqf/pVs=
+		VPgwndB9XBGIyuX7CSSiL0nvnIw=
 		</data>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftdoc</key>
+		<key>Modules/ProximitisFramework.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		NQeM65lJyKLMu5mfbL0kIoF8ewc=
+		r16CFwVN73eRC3xdXnLyrU6FkA8=
 		</data>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftinterface</key>
+		<key>Modules/ProximitisFramework.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		6S6Vbi84UOnSo3Gsm3eldmGLn2w=
+		VPgwndB9XBGIyuX7CSSiL0nvnIw=
 		</data>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftmodule</key>
+		<key>Modules/ProximitisFramework.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		cfVqzPLcNnvfoIgChufdgqf/pVs=
+		r16CFwVN73eRC3xdXnLyrU6FkA8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		KvWWt0WSehiS9DddV4yGdTJb+fA=
 		</data>
-		<key>ProximitisListTableViewCell.nib/objects-13.0+.nib</key>
+		<key>ProximitisListTableViewCell.nib</key>
 		<data>
-		yNZ+/GfkIZBB0uE0P8ycRP0tuIA=
-		</data>
-		<key>ProximitisListTableViewCell.nib/runtime.nib</key>
-		<data>
-		dwMkOXtuMKX4GIAW9dRq8xWpHuo=
+		3b4FfgGH9cz63Mq/r5ey6FBNDa8=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -63,63 +59,63 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wkW9gGHprqOC4gH5cMwV81ffnCfn3kaigkEoJlmmWPQ=
+			ZfZViXFFXlkKs/jr22+cqU+SMV1O2cGVjg4unWuyFd4=
 			</data>
 		</dict>
 		<key>Headers/ProximitisFramework-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HkGdvFBYj6gNjEyQIHArtua8C2IRGxcbAW8BVXBxgQw=
+			aFKLkY/UTTUXCai4AHCCVnxWNlphQM9OY3U1frLFVu0=
 			</data>
 		</dict>
 		<key>Headers/ProximitisFramework.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TO6WasZTb0G6GarCgv0JGTGfablY5eZ7sKmCEbb7KzQ=
+			2H26erA+ZeUQMj+0/ZzK/C7daoOLKFNA92WXfetEVZ0=
 			</data>
 		</dict>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<key>Modules/ProximitisFramework.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xDN46DvvmNCfmazqQ3U+4LJQkzejChWfLF36Odex/Vc=
+			7lKPFsobIxf9M5LkGTrQ6dea59iN0Za7stDnmlmCEoc=
 			</data>
 		</dict>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<key>Modules/ProximitisFramework.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0jCvXQ5vZVnqCRkFJnTP5kS26sxoVKmT3ET2FnV60BQ=
+			7lKPFsobIxf9M5LkGTrQ6dea59iN0Za7stDnmlmCEoc=
 			</data>
 		</dict>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
+		<key>Modules/ProximitisFramework.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k/frX0qdLsqXYcuPp8bs7WK3SFHOVkr1C/ZKXfRyyoo=
+			kS9PWL/SheVTytA6qJvL+xA6IbC/xkL0SipUdZOyUq4=
 			</data>
 		</dict>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftdoc</key>
+		<key>Modules/ProximitisFramework.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xDN46DvvmNCfmazqQ3U+4LJQkzejChWfLF36Odex/Vc=
+			xzrfZ5/EmImc9fydlrcfidCACPxk2xdNBG3XoIMzh6Y=
 			</data>
 		</dict>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftinterface</key>
+		<key>Modules/ProximitisFramework.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0jCvXQ5vZVnqCRkFJnTP5kS26sxoVKmT3ET2FnV60BQ=
+			kS9PWL/SheVTytA6qJvL+xA6IbC/xkL0SipUdZOyUq4=
 			</data>
 		</dict>
-		<key>Modules/ProximitisFramework.swiftmodule/arm64.swiftmodule</key>
+		<key>Modules/ProximitisFramework.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k/frX0qdLsqXYcuPp8bs7WK3SFHOVkr1C/ZKXfRyyoo=
+			xzrfZ5/EmImc9fydlrcfidCACPxk2xdNBG3XoIMzh6Y=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -129,18 +125,11 @@
 			5oBUArZBwsIV/Du6R3rrEGiVHu+0lygxpTk3Ax3OBUw=
 			</data>
 		</dict>
-		<key>ProximitisListTableViewCell.nib/objects-13.0+.nib</key>
+		<key>ProximitisListTableViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mj9Q4MzwRcaJQmMQWGR/pufq70uX9GznYPiqf2HRARo=
-			</data>
-		</dict>
-		<key>ProximitisListTableViewCell.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			VPQ+LnlCgCTKMJWRTb7qmw9leHfTTDssdQaFlZrG4LU=
+			ooXPOtfm2HLGqO+rwcjimoDgKhrSvwJ/br1jvOUySV8=
 			</data>
 		</dict>
 	</dict>

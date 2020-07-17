@@ -2,7 +2,7 @@
 //  ProximitisFramework.h
 //  ProximitisFramework
 //
-//  Created by Jiri Markalous on 03/03/2020.
+//  Created by Jiri Markalous on 17/07/2020.
 //  Copyright © 2020 Proximitis. All rights reserved.
 //
 

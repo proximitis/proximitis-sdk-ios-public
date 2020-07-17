@@ -12,18 +12,18 @@
 		49139343232E383D008A197C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49139342232E383D008A197C /* Assets.xcassets */; };
 		49139346232E383D008A197C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49139344232E383D008A197C /* LaunchScreen.storyboard */; };
 		49139355232E3876008A197C /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49139352232E3876008A197C /* ListViewController.swift */; };
-		4913935E232E3AC9008A197C /* ProximitisFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4913935D232E3AC9008A197C /* ProximitisFramework.framework */; };
-		49139360232E3B72008A197C /* ProximitisFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4913935D232E3AC9008A197C /* ProximitisFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		496C886424C1DF4A0027E093 /* ProximitisFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496C886324C1DF4A0027E093 /* ProximitisFramework.framework */; };
+		496C886524C1DF4A0027E093 /* ProximitisFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 496C886324C1DF4A0027E093 /* ProximitisFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		49139351232E3850008A197C /* Embed Frameworks */ = {
+		496C886624C1DF4A0027E093 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49139360232E3B72008A197C /* ProximitisFramework.framework in Embed Frameworks */,
+				496C886524C1DF4A0027E093 /* ProximitisFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -38,7 +38,7 @@
 		49139345232E383D008A197C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49139347232E383D008A197C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49139352232E3876008A197C /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		4913935D232E3AC9008A197C /* ProximitisFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProximitisFramework.framework; path = Frameworks/ProximitisFramework.framework; sourceTree = "<group>"; };
+		496C886324C1DF4A0027E093 /* ProximitisFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProximitisFramework.framework; path = ProximitisSwiftDemo/Frameworks/ProximitisFramework.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4913935E232E3AC9008A197C /* ProximitisFramework.framework in Frameworks */,
+				496C886424C1DF4A0027E093 /* ProximitisFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +58,7 @@
 			children = (
 				4913933A232E383B008A197C /* ProximitisSwiftDemo */,
 				49139339232E383B008A197C /* Products */,
+				496C87D324C1B9340027E093 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,7 +73,6 @@
 		4913933A232E383B008A197C /* ProximitisSwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
-				4913935D232E3AC9008A197C /* ProximitisFramework.framework */,
 				4913933B232E383B008A197C /* AppDelegate.swift */,
 				49139358232E387F008A197C /* View Controllers */,
 				4913933F232E383B008A197C /* Main.storyboard */,
@@ -91,6 +91,14 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		496C87D324C1B9340027E093 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				496C886324C1DF4A0027E093 /* ProximitisFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,7 +109,7 @@
 				49139334232E383B008A197C /* Sources */,
 				49139335232E383B008A197C /* Frameworks */,
 				49139336232E383B008A197C /* Resources */,
-				49139351232E3850008A197C /* Embed Frameworks */,
+				496C886624C1DF4A0027E093 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,14 +322,23 @@
 		4913934B232E383D008A197C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G42JHX722L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ProximitisSwiftDemo/Frameworks",
+					"\"$(SRCROOT)/../Framework\"",
+					"$(PROJECT_DIR)/ProximitisSwiftDemo/Frameworks/Framework/device",
+					"$(PROJECT_DIR)/ProximitisSwiftDemo/Frameworks/Framework/simulator",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Framework\"",
 				);
 				INFOPLIST_FILE = ProximitisSwiftDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,20 +347,30 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Framework\"";
 			};
 			name = Debug;
 		};
 		4913934C232E383D008A197C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G42JHX722L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ProximitisSwiftDemo/Frameworks",
+					"\"$(SRCROOT)/../Framework\"",
+					"$(PROJECT_DIR)/ProximitisSwiftDemo/Frameworks/Framework/device",
+					"$(PROJECT_DIR)/ProximitisSwiftDemo/Frameworks/Framework/simulator",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Framework\"",
 				);
 				INFOPLIST_FILE = ProximitisSwiftDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -352,6 +379,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../Framework\"";
 			};
 			name = Release;
 		};
